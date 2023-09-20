@@ -6,6 +6,8 @@ vim.g.mapleader = " "
 
 -- Options.
 vim.o.autochdir = true
+vim.o.spell = true
+vim.o.spelllang = "es,en,cjk"
 
 -- Plugin Manager (Lazy.nvim).
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -29,20 +31,22 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {},
 	},
+	"neovim/nvim-lspconfig",
 	"nvim-lualine/lualine.nvim",
 	"nvim-tree/nvim-web-devicons",
-	"tpope/vim-fugitive",
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
 	"nvim-treesitter/nvim-treesitter",
+	"tpope/vim-fugitive",
+	"williamboman/mason-lspconfig.nvim",
+	"williamboman/mason.nvim",
+        "nvim-tree/nvim-tree.lua",
 })
 
 -- Plugins Configuration.
 require("tokyonight").setup({
 	style = "night",
+	transparent = true,
 })
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd([[ colorscheme tokyonight ]])
 
 require("lualine").setup()
 
@@ -53,6 +57,7 @@ require("mason-lspconfig").setup()
 local lspconfig = require('lspconfig')
 
 lspconfig.jdtls.setup {}
+lspconfig.gopls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -90,4 +95,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
+})
+
+-- Setup Nvim-Tree.
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
 })
