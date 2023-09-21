@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 -- Options.
 vim.o.autochdir = true
 vim.o.spell = true
+vim.o.linebreak = true
 vim.o.spelllang = "es,en,cjk"
 vim.o.number = true
 vim.o.relativenumber = true
@@ -15,6 +16,10 @@ vim.o.sidescrolloff = 9999
 vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 2
+
+-- Disable NetRW.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Plugin Manager (Lazy.nvim).
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -217,9 +222,9 @@ end
 vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
 
 -- on_attach
-vim.keymap.set("n", "l", edit_or_open)
+--vim.keymap.set("n", "l", edit_or_open)
 vim.keymap.set("n", "L", vsplit_preview)
-vim.keymap.set("n", "h", api.tree.close)
+--vim.keymap.set("n", "h", api.tree.close)
 vim.keymap.set("n", "H", api.tree.collapse_all)
 
 -- Set up nvim-cmp.
