@@ -82,7 +82,14 @@ require("lazy").setup({
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
-	}
+	},
+	{
+		'renerocksai/telekasten.nvim',
+		dependencies = { 'nvim-telescope/telescope.nvim' }
+	},
+	"renerocksai/calendar-vim",
+	"nvim-lua/plenary.nvim",
+	"BurntSushi/ripgrep",
 })
 
 -- Plugins Configuration.
@@ -326,3 +333,19 @@ xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 ]]
+
+
+-- Telekasten.
+function getZettelkasten()
+	return vim.fn.expand("~/ZettelKasten")
+end
+
+require("telekasten").setup({
+	home = getZettelkasten(),
+
+	new_note_filename = "uuid-title",
+	uuid_type = "%Y%m%d%H%M%S",
+})
+
+vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":Telekasten panel<Enter>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>zn", ":Telekasten new_note<Enter>", { noremap = true })
