@@ -10,6 +10,17 @@ return {
 			},
 		},
 	},
+	keys = {
+		{ '<Leader><Leader>', nil },
+		{ '<Leader>zn',       nil },
+		{ '<leader>zf',       nil },
+		{ '<leader>zg',       nil },
+		{ '<leader>zd',       nil },
+		{ '<leader>zz',       nil },
+		{ '<leader>zc',       nil },
+		{ '<leader>zb',       nil },
+		{ '<leader>zI',       nil },
+	},
 	config = function()
 		local base_path = vim.fn.expand("~/ZettelKasten")
 
@@ -43,8 +54,5 @@ return {
 		vim.keymap.set("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>")
 		vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
 		vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
-
-		-- Call insert link automatically when we start typing a link
-		vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 	end,
 }

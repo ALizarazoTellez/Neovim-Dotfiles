@@ -2,7 +2,9 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
+		{ "folke/neodev.nvim", opts = {} },
 	},
+	event = "VeryLazy",
 	config = function()
 		local lspconfig = require('lspconfig')
 
