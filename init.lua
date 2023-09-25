@@ -17,6 +17,7 @@ vim.o.spell = true
 vim.o.spelllang = "es,en,cjk"
 vim.o.tabstop = 4
 vim.o.wrap = false
+vim.o.undofile = true
 
 -- Disable NetRW (Replaced by plugin NvimTree).
 vim.g.loaded_netrw = 1
