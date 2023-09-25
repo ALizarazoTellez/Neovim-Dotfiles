@@ -11,8 +11,19 @@ return {
 		lspconfig.jdtls.setup {
 			capabilities = capabilities,
 		}
+		lspconfig.kotlin_language_server.setup {
+			capabilities = capabilities,
+		}
 		lspconfig.gopls.setup {
 			capabilities = capabilities,
+		}
+		lspconfig.stylelint_lsp.setup {
+			capabilities = capabilities,
+			settings = {
+				stylelintplus = {
+					autoFixOnFormat = true,
+				},
+			},
 		}
 
 		require('lspconfig').lua_ls.setup {
