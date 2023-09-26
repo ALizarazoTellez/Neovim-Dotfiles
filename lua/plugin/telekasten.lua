@@ -32,17 +32,19 @@ return {
 			templates = base_path .. '/Templates/',
 			image_subdir = base_path .. '/Images/',
 
-			template_new_note = base_path .. 'Templates/Notes.md',
-			template_new_daily = base_path .. 'Templates/Dailies.md',
-			template_new_weekly = base_path .. 'Templates/Weeklies.md',
+			template_new_note = base_path .. '/Templates/Notes.md',
+			template_new_daily = base_path .. '/Templates/Dailies.md',
+			template_new_weekly = base_path .. '/Templates/Weeklies.md',
 
 			filename_space_subst = '_',
 			image_link_style = 'wiki',
 
-
-
 			new_note_filename = "uuid-title",
 			uuid_type = "%Y%m%d%H%M%S",
+
+			calendar_opts = {
+				calendar_monday = 0,
+			},
 		})
 
 		vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":Telekasten panel<Enter>", { noremap = true })
