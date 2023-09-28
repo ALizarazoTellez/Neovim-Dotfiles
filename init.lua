@@ -18,6 +18,7 @@ vim.o.spelllang = "es,en,cjk"
 vim.o.tabstop = 4
 vim.o.wrap = false
 vim.o.undofile = true
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Disable NetRW (Replaced by plugin NvimTree).
 vim.g.loaded_netrw = 1
