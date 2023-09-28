@@ -6,7 +6,7 @@
 vim.g.mapleader = " "
 
 -- Options.
-vim.o.autochdir = true
+vim.o.autochdir = false
 vim.o.linebreak = true
 vim.o.number = true
 vim.o.relativenumber = true
@@ -18,11 +18,14 @@ vim.o.spelllang = "es,en,cjk"
 vim.o.tabstop = 4
 vim.o.wrap = false
 vim.o.undofile = true
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Disable NetRW (Replaced by plugin NvimTree).
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.keymap.set('i', 'fj', '<Esc>')
+vim.keymap.set('i', 'jf', '<Esc>')
 
 -- Plugin Manager (Load Plugins).
 require('lazy-setup')
