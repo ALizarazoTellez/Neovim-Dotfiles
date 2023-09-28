@@ -27,6 +27,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.keymap.set('i', 'fj', '<Esc>')
 vim.keymap.set('i', 'jf', '<Esc>')
 
+-- Auto move cursor when the backtick is pressed.
+vim.keymap.set('i', '``', '``<Esc>i')
+
 -- Plugin Manager (Load Plugins).
 require('lazy-setup')
 
