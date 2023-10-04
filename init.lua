@@ -24,8 +24,14 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Fast alternative to <Esc> key.
 vim.keymap.set('i', 'fj', '<Esc>')
 vim.keymap.set('i', 'jf', '<Esc>')
+
+-- In some systems, the symbols `«` and `»` are very stressful of get in the
+-- keyboard, make a shortcut to generate them.
+vim.keymap.set('i', '"<', '«')
+vim.keymap.set('i', '>"', '»')
 
 -- Auto move cursor when the backtick is pressed.
 vim.keymap.set('i', '``', '``<Esc>i')
