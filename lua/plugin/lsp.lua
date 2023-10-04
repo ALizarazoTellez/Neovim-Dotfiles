@@ -32,6 +32,9 @@ return {
 				},
 			},
 		}
+		lspconfig.nil_ls.setup {
+			capabilities = capabilities,
+		}
 
 		require('lspconfig').lua_ls.setup {
 			capabilities = capabilities,
