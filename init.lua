@@ -1,5 +1,4 @@
 -- Neovim.
---
 
 -- Copyright (C) 2023, Anderson Lizarazo Tellez.
 
