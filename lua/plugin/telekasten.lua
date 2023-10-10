@@ -49,6 +49,7 @@ return {
 
 		vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":Telekasten panel<Enter>", { noremap = true })
 		vim.api.nvim_set_keymap("n", "<Leader>zn", ":Telekasten new_note<Enter>", { noremap = true })
+		vim.keymap.set("n", "<leader>zl", "<cmd>Telekasten insert_link<CR>")
 		vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
 		vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
 		vim.keymap.set("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>")
