@@ -10,16 +10,18 @@ return {
 			},
 		},
 	},
+	ft = { "telekasten", "markdown" },
 	keys = {
 		{ '<Leader><Leader>', nil },
 		{ '<Leader>zn',       nil },
-		{ '<leader>zf',       nil },
-		{ '<leader>zg',       nil },
-		{ '<leader>zd',       nil },
-		{ '<leader>zz',       nil },
-		{ '<leader>zc',       nil },
-		{ '<leader>zb',       nil },
-		{ '<leader>zI',       nil },
+		{ '<Leader>zI',       nil },
+		{ '<Leader>zb',       nil },
+		{ '<Leader>zc',       nil },
+		{ '<Leader>zd',       nil },
+		{ '<Leader>zf',       nil },
+		{ '<Leader>zg',       nil },
+		{ '<Leader>zl',       nil },
+		{ '<Leader>zz',       nil },
 	},
 	config = function()
 		local base_path = vim.fn.expand("~/ZettelKasten")
@@ -47,15 +49,15 @@ return {
 			},
 		})
 
-		vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":Telekasten panel<Enter>", { noremap = true })
-		vim.api.nvim_set_keymap("n", "<Leader>zn", ":Telekasten new_note<Enter>", { noremap = true })
-		vim.keymap.set("n", "<leader>zl", "<cmd>Telekasten insert_link<CR>")
-		vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
-		vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
-		vim.keymap.set("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>")
-		vim.keymap.set("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>")
-		vim.keymap.set("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>")
-		vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
-		vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
+		vim.keymap.set('n', '<Leader><Leader>', '<Cmd>Telekasten panel<Enter>')
+		vim.keymap.set('n', '<Leader>zn', '<Cmd>Telekasten new_note<Enter>')
+		vim.keymap.set('n', '<Leader>zl', '<cmd>Telekasten insert_link<CR>')
+		vim.keymap.set('n', '<Leader>zf', '<cmd>Telekasten find_notes<CR>')
+		vim.keymap.set('n', '<Leader>zg', '<cmd>Telekasten search_notes<CR>')
+		vim.keymap.set('n', '<Leader>zd', '<cmd>Telekasten goto_today<CR>')
+		vim.keymap.set('n', '<Leader>zz', '<cmd>Telekasten follow_link<CR>')
+		vim.keymap.set('n', '<Leader>zc', '<cmd>Telekasten show_calendar<CR>')
+		vim.keymap.set('n', '<Leader>zb', '<cmd>Telekasten show_backlinks<CR>')
+		vim.keymap.set('n', '<Leader>zI', '<cmd>Telekasten insert_img_link<CR>')
 	end,
 }
