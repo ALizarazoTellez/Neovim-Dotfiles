@@ -20,6 +20,14 @@ vim.o.wrap = false
 vim.o.undofile = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+-- Auto-commands.
+vim.api.nvim_create_autocmd('TermOpen', {
+	desc = 'Disable spell checking in terminal',
+	callback = function()
+		vim.opt_local.spell = false
+	end,
+})
+
 -- Disable NetRW (replaced by plugin NvimTree).
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -41,4 +49,3 @@ require('lazy-setup')
 
 -- Miscellaneous Configurations (Require Load Plugins).
 vim.cmd.colorscheme 'tokyonight'
-
