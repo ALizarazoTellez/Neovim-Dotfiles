@@ -22,6 +22,7 @@ return {
 		{ '<Leader>zg',       nil },
 		{ '<Leader>zl',       nil },
 		{ '<Leader>zz',       nil },
+		{ '<Leader>zp',       nil },
 	},
 	config = function()
 		local base_path = vim.fn.expand("~/ZettelKasten")
@@ -59,5 +60,6 @@ return {
 		vim.keymap.set('n', '<Leader>zc', '<cmd>Telekasten show_calendar<CR>')
 		vim.keymap.set('n', '<Leader>zb', '<cmd>Telekasten show_backlinks<CR>')
 		vim.keymap.set('n', '<Leader>zI', '<cmd>Telekasten insert_img_link<CR>')
+		vim.keymap.set('n', '<Leader>zp', '<cmd>Glow<CR>')
 	end,
 }
