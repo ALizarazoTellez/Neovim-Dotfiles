@@ -39,10 +39,10 @@ return {
 			template_new_daily = base_path .. '/Templates/Dailies.md',
 			template_new_weekly = base_path .. '/Templates/Weeklies.md',
 
-			filename_space_subst = '_',
+			--filename_space_subst = '_',
 			image_link_style = 'wiki',
 
-			new_note_filename = "uuid-title",
+			new_note_filename = "uuid",
 			uuid_type = "%Y%m%d%H%M%S",
 
 			calendar_opts = {

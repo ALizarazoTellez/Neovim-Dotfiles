@@ -20,7 +20,7 @@ return {
 				-- Template for the formatted citation
 				citation_format = "[[^@{{label}}]]: {{author}} ({{year}}), {{title}}.",
 				-- Only use initials for the authors first name
-				citation_trim_firstname = true,
+				citation_trim_firstname = false,
 				-- Max number of authors to write in the formatted citation
 				-- following authors will be replaced by "et al."
 				citation_max_auth = 2,
