@@ -20,4 +20,7 @@ require('lazy').setup('plugin', {
 	change_detection = {
 		notify = false,
 	},
+	dev = {
+	  path = "~/Code",
+	},
 })
