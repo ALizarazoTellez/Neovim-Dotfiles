@@ -1,20 +1,29 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+
 	build = ":TSUpdate",
+
 	opts = {
 		-- A list of parser names, or "all" (the five listed parsers should always be installed)
 		ensure_installed = {
-			"c",
-			"css",
+			-- Go.
 			"go",
 			"gomod",
 			"gosum",
 			"gowork",
-			"gotmpl",
+			-- Kotlin.
+			"kotlin",
+			-- Web.
 			"html",
+			"css",
 			"javascript",
+			-- C.
+			"c",
+			-- Java.
+			"java",
+			-- Script.
 			"lua",
-			"query",
+			-- Vim.
 			"vim",
 			"vimdoc",
 		},
@@ -35,5 +44,25 @@ return {
 			-- Instead of true it can also be a list of languages
 			additional_vim_regex_highlighting = false,
 		},
+
+		incremental_selection = {
+			enable = true,
+
+			keymaps = {
+				init_selection = "gnn", -- set to `false` to disable one of the mappings
+				node_incremental = "grn",
+				scope_incremental = "grc",
+				node_decremental = "grm",
+			},
+		},
+
+		-- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
+		indent = {
+			enable = false,
+		},
 	},
+
+	config = function(_, opts)
+		require('nvim-treesitter.configs').setup(opts)
+	end,
 }
