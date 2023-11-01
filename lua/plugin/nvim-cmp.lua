@@ -28,7 +28,7 @@ return {
 				['<C-l>'] = cmp.mapping.complete(),
 				['<C-k>'] = cmp.mapping.abort(),
 				['<Tab>'] = cmp.mapping.confirm(
-					{ select = false }
+					{ select = true }
 				),
 			}),
 			sources = cmp.config.sources({
