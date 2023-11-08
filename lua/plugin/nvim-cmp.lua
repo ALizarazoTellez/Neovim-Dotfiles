@@ -2,9 +2,11 @@ return {
 	'hrsh7th/nvim-cmp',
 
 	dependencies = {
-		'hrsh7th/cmp-nvim-lsp',
-		'hrsh7th/cmp-buffer',
 		'dcampos/cmp-snippy',
+		'hrsh7th/cmp-buffer',
+		'hrsh7th/cmp-cmdline',
+		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-path',
 	},
 
 	event = { "InsertEnter", "CmdlineEnter" },
@@ -140,7 +142,25 @@ return {
 				max_view_entries = 7,
 			},
 			completion = {
-				-- It must be a very precise suggestion to launch the autocomplete.
+				keyword_length = 1,
+			},
+		})
+
+		-- Configuration for command line.
+		cmp.setup.cmdline(':', {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = 'path' }
+			}, {
+				{ name = 'cmdline' }
+			}, {
+				{ name = 'buffer' },
+			}),
+			performance = {
+				-- Balance between number of suggestions and performance.
+				max_view_entries = 32,
+			},
+			completion = {
 				keyword_length = 1,
 			},
 		})
