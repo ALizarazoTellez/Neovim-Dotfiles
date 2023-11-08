@@ -41,6 +41,11 @@ return {
 					end
 
 					cmp.complete()
+
+					-- If there are only a suggestion use it.
+					if #cmp.get_entries() == 1 then
+						cmp.confirm({ select = true })
+					end
 				end,
 				['<S-Tab>'] = cmp.mapping.select_prev_item(),
 				['<Enter>'] = cmp.mapping.confirm({ select = false }),
