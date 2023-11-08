@@ -62,7 +62,24 @@ return {
 						fallback()
 					end
 				end,
+
+				['<Down>'] = cmp.mapping.select_next_item(),
+				['<Up>'] = cmp.mapping.select_prev_item(),
+
 				['<Enter>'] = cmp.mapping.confirm({ select = false }),
+
+				-- List snippets.
+				['<C-L>'] = cmp.mapping.complete({
+					config = {
+						sources = {
+							{ name = 'snippy' },
+						},
+						performance = {
+							-- I want see all the snippets.
+							max_view_entries = 100,
+						},
+					},
+				}),
 			},
 
 			completion = {
