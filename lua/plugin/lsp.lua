@@ -2,43 +2,12 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
+		'williamboman/mason-lspconfig.nvim',
 	},
-	event = "VeryLazy",
+
+	lazy = true,
+
 	config = function()
-		local lspconfig = require('lspconfig')
-
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-		lspconfig.jdtls.setup {
-			capabilities = capabilities,
-		}
-		lspconfig.kotlin_language_server.setup {
-			capabilities = capabilities,
-		}
-		lspconfig.gopls.setup {
-			capabilities = capabilities,
-			settings = {
-				gopls = {
-					gofumpt = true,
-				},
-			},
-		}
-		lspconfig.stylelint_lsp.setup {
-			capabilities = capabilities,
-			settings = {
-				stylelintplus = {
-					autoFixOnFormat = true,
-				},
-			},
-		}
-		lspconfig.nil_ls.setup {
-			capabilities = capabilities,
-		}
-
-		lspconfig.clangd.setup {
-			capabilities = capabilities,
-		}
-
 		-- Global mappings.
 		-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
