@@ -40,6 +40,11 @@ return {
 						return
 					end
 
+					if snippy.can_jump(1) then
+						snippy.next()
+						return
+					end
+
 					cmp.complete()
 
 					-- If there are only a suggestion use it.
@@ -47,7 +52,15 @@ return {
 						cmp.confirm({ select = true })
 					end
 				end,
-				['<S-Tab>'] = cmp.mapping.select_prev_item(),
+				['<S-Tab>'] = function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif snippy.can_jump(-1) then
+						snippy.previous()
+					else
+						fallback()
+					end
+				end,
 				['<Enter>'] = cmp.mapping.confirm({ select = false }),
 			},
 

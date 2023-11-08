@@ -1,10 +1,18 @@
 return {
 	'dcampos/nvim-snippy',
+	dependencies = {
+		'honza/vim-snippets',
+	},
 
 	lazy = true,
 
-	dependencies = {
-		'honza/vim-snippets',
+	opts = {
+		mappings = {
+			is = {
+				-- Most of the autocompletion is done by Nvim-Cmp.
+				['<C-J>'] = 'expand_or_advance',
+			},
+		},
 	},
 
 	config = true,
