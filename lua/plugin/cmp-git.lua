@@ -1,5 +1,10 @@
 return {
 	'petertriho/cmp-git',
+	ft = {
+		'git',
+		'gitcommit',
+		'gitrebase',
+	},
 	config = function()
 		local format = require("cmp_git.format")
 		local sort = require("cmp_git.sort")

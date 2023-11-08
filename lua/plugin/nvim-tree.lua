@@ -3,10 +3,11 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	event = "BufEnter",
+
 	keys = {
 		{ "<C-h>", nil, desc = "Toggle Nvim-Tree." },
 	},
+
 	config = function()
 		require("nvim-tree").setup({
 			sort_by = "case_sensitive",
