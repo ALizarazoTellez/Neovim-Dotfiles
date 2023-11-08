@@ -16,5 +16,8 @@ return {
 		},
 	},
 
-	config = true,
+	config = function()
+		local snippy = require('snippy')
+		vim.keymap.set('i', '<C-s>', snippy.complete)
+	end,
 }
