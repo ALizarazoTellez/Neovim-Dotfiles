@@ -4,22 +4,16 @@ return {
 		'honza/vim-snippets',
 	},
 
+	lazy = true,
+
 	opts = {
 		mappings = {
 			is = {
-				-- Check Nvim-Cmp plugin.
-				['<C-j>'] = 'expand_or_advance',
-			},
-			nx = {
-				['<leader>x'] = 'cut_text',
+				-- Most of the autocompletion is done by Nvim-Cmp.
+				['<C-J>'] = 'expand_or_advance',
 			},
 		},
 	},
 
-	config = function(_, opts)
-		local snippy = require('snippy')
-
-		snippy.setup(opts)
-		vim.keymap.set('i', '<C-s>', snippy.complete)
-	end,
+	config = true,
 }
