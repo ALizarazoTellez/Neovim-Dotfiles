@@ -12,17 +12,36 @@ return {
 		local cmp = require('cmp')
 		local snippy = require('snippy')
 
+		-- Helpers.
+		local has_words_before = function()
+			unpack = unpack or table.unpack
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		end
+
 		cmp.setup({
 			enabled = true,
 
 			--[[
 			  Completion mode:
-				1. If the autocomplete window is not present, the <Tab> key will launch it, but will not choose any options.
-				2. If the auto-complete window is present, the <Tab> and <S-Tab> keys will toggle between options.
-				3. If the auto-complete window is present and an option is selected, the <Enter> key will select an option.
+				- If the autocomplete window is not present, the <Tab> key will launch it, but will not choose any options.
+				- If the auto-complete window is present, the <Tab> and <S-Tab> keys will toggle between options.
+				* If the auto-complete window is present and an option is selected, the <Enter> key will select an option.
 			--]]
 			mapping = {
-				['<Tab>'] = cmp.mapping.select_next_item(),
+				['<Tab>'] = function(fallback)
+					if not has_words_before() then
+						fallback()
+						return
+					end
+
+					if cmp.visible() then
+						cmp.select_next_item()
+						return
+					end
+
+					cmp.complete()
+				end,
 				['<S-Tab>'] = cmp.mapping.select_prev_item(),
 				['<Enter>'] = cmp.mapping.confirm({ select = false }),
 			},
