@@ -55,6 +55,22 @@ return {
 				expandable_indicator = true,
 			},
 
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
+
+			view = {
+				docs = {
+					auto_open = true,
+				},
+			},
+
+			-- Disable all experimental features.
+			experimental = {
+				ghost_text = false,
+			},
+
 			performance = {
 				-- Many options are more distracting than helpful.
 				max_view_entries = 14,
