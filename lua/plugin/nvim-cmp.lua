@@ -10,7 +10,34 @@ return {
 
 	config = function()
 		local lspkind = require('lspkind')
-		local cmp = require 'cmp'
+		local cmp = require('cmp')
+		local snippy = require('snippy')
+
+		local has_words_before = function()
+			unpack = unpack or table.unpack
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		end
+
+		local mapping_i_s = function(fallback)
+			if cmp.visible() then
+				if #cmp.get_entries() == 1 then
+					cmp.confirm({ select = true })
+				else
+					cmp.select_next_item()
+				end
+			elseif snippy.can_expand_or_advance() then
+				snippy.expand_or_advance()
+			elseif has_words_before() then
+				cmp.complete()
+				if #cmp.get_entries() == 1 then
+					cmp.confirm({ select = true })
+				end
+			else
+				fallback()
+			end
+		end
+
 
 		cmp.setup({
 			snippet = {
@@ -22,18 +49,44 @@ return {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
-			mapping = cmp.mapping.preset.insert({
+			mapping = {
 				['<C-b>'] = cmp.mapping.scroll_docs(-1),
 				['<C-f>'] = cmp.mapping.scroll_docs(1),
 				['<C-l>'] = cmp.mapping.complete(),
 				['<C-k>'] = cmp.mapping.abort(),
-				['<Tab>'] = cmp.mapping.confirm(
-					{ select = true }
-				),
-			}),
+
+				['<Tab>'] = cmp.mapping({
+					i = mapping_i_s,
+					s = mapping_i_s,
+					o = function(_)
+						if cmp.visible() then
+							if #cmp.get_entries() == 1 then
+								cmp.confirm({ select = true })
+							else
+								cmp.select_next_item()
+							end
+						else
+							cmp.complete()
+							if #cmp.get_entries() == 1 then
+								cmp.confirm({ select = true })
+							end
+						end
+					end
+				}),
+
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif snippy.can_jump(-1) then
+						snippy.previous()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+			},
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
-				{ name = 'snippy' },
+				--{ name = 'snippy' },
 				{ name = 'buffer' },
 			}),
 			formatting = {
