@@ -1,5 +1,13 @@
 return {
 	'folke/neodev.nvim',
+	dependencies = {
+		'neovim/nvim-lspconfig',
+		'hrsh7th/cmp-nvim-lsp',
+	},
+
+	-- Lazy loading.
+	ft = 'lua',
+
 	opts = {
 		library = {
 			enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
@@ -27,18 +35,9 @@ return {
 	config = function(_, opts)
 		require('neodev').setup(opts)
 
-		-- then setup your lsp server as usual
-		local lspconfig = require('lspconfig')
-
-		-- example to setup lua_ls and enable call snippets
-		lspconfig.lua_ls.setup({
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace"
-					}
-				}
-			}
+		-- Setup LuaLS.
+		require('lspconfig').lua_ls.setup({
+			capabilities = require('cmp_nvim_lsp').default_capabilities(),
 		})
 	end,
 }
