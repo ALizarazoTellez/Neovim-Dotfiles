@@ -20,6 +20,7 @@ return {
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
+		-- Default configuration.
 		cmp.setup({
 			enabled = true,
 
@@ -126,6 +127,22 @@ return {
 			}, {
 				{ name = 'buffer' },
 			}),
+		})
+
+		-- Configuration for search.
+		cmp.setup.cmdline({ '/', '?' }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = 'buffer' },
+			},
+			performance = {
+				-- Many options are more distracting than helpful.
+				max_view_entries = 7,
+			},
+			completion = {
+				-- It must be a very precise suggestion to launch the autocomplete.
+				keyword_length = 1,
+			},
 		})
 	end,
 }
