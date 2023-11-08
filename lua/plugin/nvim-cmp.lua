@@ -8,6 +8,8 @@ return {
 		'dcampos/cmp-snippy',
 	},
 
+	event = { "InsertEnter", "CmdlineEnter" },
+
 	config = function()
 		local lspkind = require('lspkind')
 		local cmp = require('cmp')
