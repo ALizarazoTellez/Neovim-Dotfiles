@@ -3,6 +3,7 @@ return {
 
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-buffer',
 		'dcampos/cmp-snippy',
 	},
 
@@ -105,6 +106,8 @@ return {
 
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
+			}, {
+				{ name = 'buffer' },
 			}),
 		})
 	end,
