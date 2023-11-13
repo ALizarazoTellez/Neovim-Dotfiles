@@ -125,7 +125,10 @@ return {
 			},
 
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
+				{
+					name = 'nvim_lsp',
+					keyword_length = 1, -- Generally the completions of the LSP server are very precise.
+				},
 			}, {
 				{ name = 'buffer' },
 			}),
