@@ -6,6 +6,19 @@ return {
 
 	ft = 'markdown',
 
+	keys = {
+		{ '<Leader>zn', '<Cmd>ZkNew<Enter>' },
+		{ '<Leader>zN', '<Cmd>ZkNotes<Enter>' },
+		{ '<Leader>zm', ":ZkMatch<Enter>",                   mode = 'v' },
+		{ '<Leader>zn', ':ZkNewFromTitleSelection<Enter>',   mode = 'v' },
+		{ '<Leader>zN', ':ZkNewFromContentSelection<Enter>', mode = 'v' },
+		{ '<Leader>zi', '<Cmd>ZkInsertLink<Enter>' },
+		{ '<Leader>zI', '<Cmd>ZkInsertAtSelection<Enter>' },
+		{ '<Leader>zb', '<Cmd>ZkBacklinks<Enter>' },
+		{ '<Leader>zl', '<Cmd>ZkLinks<Enter>' },
+		{ '<Leader>zt', '<Cmd>ZkTags<Enter>' },
+	},
+
 	name = 'zk',
 	opts = {
 		-- can be "telescope", "fzf", "fzf_lua" or "select" (`vim.ui.select`)
