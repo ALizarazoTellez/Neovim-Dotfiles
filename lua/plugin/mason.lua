@@ -4,7 +4,9 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 		},
-		lazy = true,
+
+		cmd = 'LspInstall',
+
 		config = true,
 	},
 
