@@ -17,9 +17,9 @@ return {
 		{ '<Leader>zb', '<Cmd>ZkBacklinks<Enter>' },
 		{ '<Leader>zl', '<Cmd>ZkLinks<Enter>' },
 		{ '<Leader>zt', '<Cmd>ZkTags<Enter>' },
+		{ '<Leader>zo', '<Cmd>ZkOrphans<Enter>' },
 	},
 
-	name = 'zk',
 	opts = {
 		-- can be "telescope", "fzf", "fzf_lua" or "select" (`vim.ui.select`)
 		-- it's recommended to use "telescope", "fzf" or "fzf_lua"
@@ -41,5 +41,16 @@ return {
 			},
 		},
 	},
-	config = true,
+	config = function(_, opts)
+		-- Configure plugin.
+		require('zk').setup(opts)
+
+		local zk = require("zk")
+		local commands = require("zk.commands")
+
+		commands.add("ZkOrphans", function(options)
+			options = vim.tbl_extend("force", { orphan = true }, options or {})
+			zk.edit(options, { title = "Zk Orphans" })
+		end)
+	end,
 }
